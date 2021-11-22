@@ -35,7 +35,6 @@ function agregarBoleto() {
     let fila = document.getElementById('fila-id').value, asiento = document.getElementById('asiento-id').value
     contador = contador + 1
 
-if 
     let a = `
     <tr id="boleto${contador}">
     <td>
