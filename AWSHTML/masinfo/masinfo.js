@@ -47,19 +47,20 @@ function agregarBoleto() {
         </div>
     </td>
     <td class="col-1">
-        <button type="button" onclick="Borrarboleto(contador)" class="btn btn-danger">Borrar</button>
+        <button type="button" onclick="Borrarboleto(${contador})" class="btn btn-danger">Borrar</button>
     </td>
     </tr>
     `
     boletos.insertAdjacentHTML("beforeend",a)
 
     ArregloBoletos.push([fila, asiento])
-
 }
 
 function Borrarboleto(contador) {
     let idboleto = document.getElementById("boleto"+contador)
+    console.log(contador);
     idboleto.remove()
+    console.log(contador);
 }
 
 let nuevosValores = valores
