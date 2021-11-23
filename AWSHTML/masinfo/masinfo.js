@@ -1,4 +1,3 @@
-
 let valores = window.location.search;
 const urlParams = new URLSearchParams(valores);
 let origen = urlParams.get('origen');
@@ -24,7 +23,6 @@ tablaFecha.innerHTML = fecha
 tablaCosto.innerHTML = costo
 tablaAsientosdisp.innerHTML = asientosdisp
 
-
 console.log(valores);
 
 let contador = 0
@@ -32,50 +30,68 @@ let ArregloBoletos = new Array;
 
 function agregarBoleto() {
     let boletos = document.getElementById('boletos-id')
-    let fila = document.getElementById('fila-id').value, asiento = document.getElementById('asiento-id').value
-    contador = contador + 1
+    let boletoselec = document.getElementById('boletosdisp-id').value
+
+    console.log(boletoselec);
 
     let a = `
-    <tr id="boleto${contador}">
+    <tr id="${boletoselec}">
     <td>
         Boleto
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text col-10">${fila}</span>
-              <span class="input-group-text col-10">${asiento}</span>
+              <span class="input-group-text col-10">${boletoselec}</span>
             </div>
         </div>
     </td>
     <td class="col-1">
-        <button type="button" onclick="Borrarboleto(${contador})" class="btn btn-danger">Borrar</button>
+        <button type="button" onclick="Borrarboleto('${boletoselec}')" class="btn btn-danger">Borrar</button>
     </td>
     </tr>
     `
     boletos.insertAdjacentHTML("beforeend",a)
 
-    ArregloBoletos.push([fila, asiento])
+    let boletovalor = document.querySelectorAll(`option[value="${boletoselec}"]`);
+    console.log(boletovalor);
+    boletovalor[0].disabled = true
+
+    document.getElementById('boletosdisp-id').value='Escoge...'
+
+    ArregloBoletos.push(boletoselec)
+    console.log(ArregloBoletos);
 }
 
-function Borrarboleto(contador) {
-    let idboleto = document.getElementById("boleto"+contador)
-    console.log(contador);
+function Borrarboleto(boleto) {
+    console.log(boleto)
+    let idboleto = document.getElementById(boleto)  
+
+    var search_term = boleto;
+
+    for (var i=ArregloBoletos.length-1; i>=0; i--) {
+        if (ArregloBoletos[i] === search_term) {
+            ArregloBoletos.splice(i, 1);
+        }
+    }
+
+    let boletodesbloquear = document.querySelectorAll(`option[value="${boleto}"]`);
+    boletodesbloquear[0].disabled = false
+
+    console.log(ArregloBoletos);
+
     idboleto.remove()
-    console.log(contador);
 }
 
 let nuevosValores = valores
 let pagarButton = document.getElementById('pagar-id')
 
 function totalBoletos() {
-    for (let index = 0; index < ArregloBoletos.length; index++) {
-        nuevosValores = nuevosValores+'&Boleto'+index+'='+ArregloBoletos[index]
-    }
+    // for (let index = 0; index < ArregloBoletos.length; index++) {
+    //     nuevosValores = nuevosValores+'&Boleto'+index+'='+ArregloBoletos[index]
+    // }
     
+    nuevosValores = nuevosValores +'&Boletos='+ ArregloBoletos.toString()
     console.log(nuevosValores);
 
     pagarButton.href = '../confpago/index.html'+nuevosValores
     console.log(pagarButton);
 }
-
-
-
