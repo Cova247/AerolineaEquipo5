@@ -5,7 +5,6 @@ let destino = urlParams.get('destino')
 let fecha = urlParams.get('fecha')
 let hora = urlParams.get('hora')
 let costo = urlParams.get('costo')
-let asientosdisp = urlParams.get('asientosdisp')
 
 console.log(origen, destino, fecha, hora, costo, asientosdisp);
 
@@ -21,7 +20,6 @@ tablaDestino.innerHTML = destino
 tablaHora.innerHTML = hora
 tablaFecha.innerHTML = fecha
 tablaCosto.innerHTML = costo
-tablaAsientosdisp.innerHTML = asientosdisp
 
 console.log(valores);
 
@@ -81,17 +79,78 @@ function Borrarboleto(boleto) {
     idboleto.remove()
 }
 
+document.addEventListener('DOMContentLoaded', async ()=> {
+
+    let resp = await fetch('https://json.extendsclass.com/bin/89f13b30b47e', {
+        method: 'GET'
+    });
+    
+    let asientos = await resp.json()
+    console.log(asientos);
+    
+    if(destino == 'Cancun'){
+        tablaAsientosdisp.innerHTML = asientos.asientoscancun
+    }
+    else if(destino == 'PuertoVallarta'){
+        tablaAsientosdisp.innerHTML = asientos.asientospuerto
+    }
+    else {
+        tablaAsientosdisp.innerHTML = asientos.asientosleon
+    }
+
+});
+
+document.addEventListener('DOMContentLoaded', async ()=> {
+
+    let resp = await fetch('https://json.extendsclass.com/bin/756a0d5acfc0', {
+        method: 'GET'
+    });
+
+    let asientos = await resp.json()
+    console.log(asientos);
+
+    if(destino == 'Cancun'){
+        let disp = asientos.Cancun
+        for (let index = 0; index < disp.length; index++) {
+            let asiento = document.querySelectorAll('option[value="'+ disp[index] +'"')
+            // console.log(asiento[0].value);
+            asiento[0].removeAttribute('disabled')
+        }
+    }
+    else if(destino == 'PuertoVallarta'){
+        let disp = asientos.Puerto
+        for (let index = 0; index < disp.length; index++) {
+            let asiento = document.querySelectorAll('option[value="'+ disp[index] +'"')
+            // console.log(asiento[0].value);
+            asiento[0].removeAttribute('disabled')
+        }
+    }
+    else if(destino == 'Leon'){
+        let disp = asientos.Leon //Cambiar a Leon cuando se suba a la página
+        for (let index = 0; index < disp.length; index++) {
+            let asiento = document.querySelectorAll('option[value="'+ disp[index] +'"')
+            // console.log(asiento[0].value);
+            asiento[0].removeAttribute('disabled')
+        }
+    }
+
+})
+
 let nuevosValores = valores
 let pagarButton = document.getElementById('pagar-id')
 
 function totalBoletos() {
-    // for (let index = 0; index < ArregloBoletos.length; index++) {
-    //     nuevosValores = nuevosValores+'&Boleto'+index+'='+ArregloBoletos[index]
-    // }
     
-    nuevosValores = nuevosValores +'&Boletos='+ ArregloBoletos.toString()
     console.log(nuevosValores);
+    console.log(ArregloBoletos.length);
 
-    pagarButton.href = '../confpago/index.html'+nuevosValores
-    console.log(pagarButton);
+    if (ArregloBoletos.length != 0) {
+        nuevosValores = nuevosValores +'&Boletos='+ ArregloBoletos.toString()
+        pagarButton.href = '../confpago/index.html'+nuevosValores
+        console.log(pagarButton);
+    }
+    else {
+        $('#exampleModal3').modal('show');
+    }
+
 }

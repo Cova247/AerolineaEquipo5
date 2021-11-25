@@ -45,89 +45,89 @@
         <thead>
           <tr>
             <th >
-                <form>
+                <form id="formComprar" class="was-validated">
                     <br>
                     <p><h2>Llene la información de pago:</h2></p>
-                    <p><h3>Total a pagar: </h3><h2 color="purple">$4,599 MXN</h2></p><br>
-                    <div class="form-group row col-11">
+                    <p><h3>Total a pagar: </h3><h2 id="dineros" color="purple"></h2></p><br>
+                    <div class="form-group row col-12">
                       <label for="inputPago" class="col-sm-3 col-form-label">Nombre</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" required>
                       </div>
                     </div>
-                    <div class="form-group row col-11">
+                    <div class="form-group row col-12">
                         <label for="inputPago" class="col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="inputEmail" placeholder="Email" >
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
                         </div>
                     </div>
-                    <div class="form-group row col-11">
+                    <div class="form-group row col-12">
                         <label for="inputPago" class="col-sm-3 col-form-label">Dirección</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputDirección" placeholder="Dirección" >
+                            <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" required>
                         </div>
                     </div>
-                    <div class="form-group row col-11">
+                    <div class="form-group row col-12">
                         <label for="inputPago" class="col-sm-3 col-form-label">Teléfono</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputTeléfono" placeholder="Teléfono">
+                            <input type="number" class="form-control" id="inputTelefono" placeholder="Teléfono" required>
                         </div>
                     </div>
-                    <div class="form-group row col-11">
+                    <div class="form-group row col-12">
                         <label for="inputPago" class="col-sm-3 col-form-label">Tarjeta</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputTarjeta" placeholder="Número de Tarjeta" >
+                            <input type="number" class="form-control" id="inputTarjeta" placeholder="Número de Tarjeta" required>
                         </div>
                     </div>
-                    <div class="form-group row col-11">
-                      <label for="inputPago" class="col-sm-3 col-form-label"></label>
-                      <div class="col-sm-3">
-                          <input type="text" class="form-control" id="inputVencimiento" placeholder="mm/aa" >
+                    <div class="form-group row col-12">
+                      <label for="inputPago" class="col-sm-3 col-form-label">Fecha de V.</label>
+                      <div class="col-sm-5">
+                          <input type="date" class="form-control" id="inputVencimiento" placeholder="mm/aa" required>
                       </div>
                     
-                      <label for="inputPago" class="col-sm-3 col-form-label"></label>
+                      <label for="inputPago" class="col-sm-1 col-form-label">CVV</label>
                       <div class="col-sm-3">
-                          <input type="text" class="form-control" id="inputCVV" placeholder="CVV" >
+                          <input type="number" class="form-control" id="inputCVV" placeholder="CVV" required>
                       </div>
                     </div>
                       
                     <fieldset disabled>
-                        <div class="form-group row col-11">
+                        <div class="form-group row col-12">
                           <label for="inputPago" class="col-sm-3 col-form-label">Origen</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputOrigen" placeholder="Origen" value="Guadalajara, México">
+                            <input type="text" class="form-control" id="inputOrigen" placeholder="Origen" value="">
                           </div>
                         </div>
-                        <div class="form-group row col-11">
+                        <div class="form-group row col-12">
                           <label for="inputPago" class="col-sm-3 col-form-label">Destino</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputDestino" placeholder="Destino" value="Cancún, México">
+                            <input type="text" class="form-control" id="inputDestino" placeholder="Destino" value="">
                           </div>
                         </div>
-                        <div class="form-group row col-11">
+                        <div class="form-group row col-12">
                           <label for="inputPago" class="col-sm-3 col-form-label">Hora de Salida</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputHoraSalida" placeholder="Hora de Salida" value="7:00 AM">
+                            <input type="text" class="form-control" id="inputHoraSalida" placeholder="Hora de Salida" value="">
                           </div>
                         </div>
-                        <div class="form-group row col-11">
+                        <div class="form-group row col-12">
                           <label for="inputPago" class="col-sm-3 col-form-label">Fecha de Salida</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputFechaSalida" placeholder="Fecha de Salida" value="18/Junio/2022">
+                            <input type="text" class="form-control" id="inputFechaSalida" placeholder="Fecha de Salida" value="">
                           </div>
                         </div>
                         
-                        <div class="form-group row col-11">
+                        <div class="form-group row col-12">
                           <label for="inputPago" class="col-sm-3 col-form-label">Asiento(s)</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputAsientos" placeholder="Asientos" value="D22, E22" >
+                            <input type="text" class="form-control" id="inputAsientos" placeholder="Asientos" value="" >
                           </div>
                         </div>
                   </fieldset>
 
                     <div class="button-container-div">
                         <a type="button" class="btn btn-danger" href="../index.html">Cancelar</a>
-                        <a type="button" class="btn btn-success" href="../Gracias/index.html">Orale va!</a>
+                        <button id="oraledatos" type="submit" class="btn btn-success" >Orale va!</button>
                     </div>
                     <br>
               </form>
@@ -136,8 +136,29 @@
         </thead>
     </table>
     <br>
-      
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal3Label"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ERROR! No escribió un correo válido o este correo ya tiene boletos asignados. Por favor escriba uno válido.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- Optional JavaScript -->
+    <script src="../confpago/confpago.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
