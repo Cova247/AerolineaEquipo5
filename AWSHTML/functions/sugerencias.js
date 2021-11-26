@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin')
 const express = require('express')
+let inputSugerencia = document.getElementById('inputSugerencia')
 
 const app = express()
 admin.initializeApp({
@@ -9,12 +10,6 @@ admin.initializeApp({
 })
 
 const db = admin.firestore()
-
-/*
-app.get('/hello', (req, res) => {
-    return res.status(200).json({message: 'Kiubo'})
-})
-*/
 
 // Recibir id y sugerencia para guardar en firestone
 app.post('/api/sugerencias', async (req,res)=>{
