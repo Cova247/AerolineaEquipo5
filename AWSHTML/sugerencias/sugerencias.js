@@ -1,24 +1,24 @@
-/*
-const mongoose = require('mongoose');*/
-const mongo = require('../dbconnect');
-const dbconfig = require('../dbsetup');
-const quejasSchema = require('../schema/quejas')
+let formSug = document.getElementById('formSug')
+console.log(formSug);
 
-const sendToMongoDB = async () => {
-    var nameValue = document.getElementById("inputSugerencia").value;
-    await mongo().then(async (mongoose) => {
-        try {
-            //console.log('Connected to mongodb')
+formSug.addEventListener('submit', async e => {
+    e.preventDefault();
+    
+    let inputSug = document.getElementById('inputSugerencia')
+    let sug = {
+        "sugerencia":inputSug.value
+    }
 
-            const history = {
-                queja: (nameValue.value)
-            }
-
-            console.log(nameValue.value)
-            await new quejasSchema(history).save()
-        } finally {
-            mongoose.connection.close()
+    let subidaSug = await fetch('https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/ssugerencias-jexnb/service/sugerencia/incoming_webhook/api', {
+        method: 'POST',
+        body: JSON.stringify(sug),
+        headers: {
+            'Content-Type': 'application/json'
         }
     })
-}
-sendToMongoDB()
+    
+    let resp = await subidaSug.json()   
+    console.log(resp);
+    window.location.href = '../index.html'
+
+})

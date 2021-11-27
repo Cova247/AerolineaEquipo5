@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.1037.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^6.0.13"
+    "mongoose": "^6.0.13",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "node app.js"
