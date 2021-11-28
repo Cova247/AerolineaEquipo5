@@ -1,7 +1,3 @@
-const mongo = require('./AWSHTML/dbconnect');
-const dbconfig = require('./AWSHTML/dbsetup');
-const quejasSchema = require('./AWSHTML/schema/quejas')
-
 var port = process.env.PORT || 3000
     http = require('http')
     const express = require('express');
@@ -18,25 +14,3 @@ var port = process.env.PORT || 3000
 
 // Put a bad ass message on the terminal
 app.listen(port,() =>console.log(`Corriendo en el puerto ${port}`))
-
-// Subir basura para comprobar post de datos:
-//module.exports = (client, message, queue, track) => 
-/*
-const sendToMongoDB = async () => {
-    await mongo().then(async (mongoose) => {
-        try {
-            //console.log('Connected to mongodb')
-
-            const history = {
-                queja: "buuuu quejado"
-            }
-
-            console.log('Queja mandada')
-            await new quejasSchema(history).save()
-        } finally {
-            mongoose.connection.close()
-        }
-    })
-}
-sendToMongoDB()
-*/
