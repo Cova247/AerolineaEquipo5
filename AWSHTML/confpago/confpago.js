@@ -213,6 +213,24 @@ formCompra.addEventListener('submit', async e => {
                     'Content-Type': 'application/json'
                 }
             })
+            let email = {
+                "from" : Email.value,
+                "subject" : "Boletos Bolariz",
+                "text" : "Buenas tardes, agradecemos su compra, aquí estan sus boletos",
+                "origen" : origen,
+                "destino" : destino,
+                "horaSalida" : hora,
+                "fechaSalida" : fecha,
+                "asientos" : numboletos.toString()
+        
+            }
+            let respSubida = await fetch('https://sjuvu2c7d9.execute-api.us-east-2.amazonaws.com/dev-bolariz/email', {
+                    method: 'POST',
+                    body: JSON.stringify(email),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
 
             let respTotal = await putTotal.json()
             // console.log(respTotal);
@@ -228,5 +246,6 @@ formCompra.addEventListener('submit', async e => {
         }
 
     }  
+    
 
 })
