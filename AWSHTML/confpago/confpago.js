@@ -16,6 +16,7 @@ let inputAsientos = document.getElementById('inputAsientos')
 
 let dinerosHTML = document.getElementById('dineros')
 
+// Separar arreglo por comas y se guarda en otro arreglo
 let numBoletosString = boletos
 let numboletos = numBoletosString.split(',')
 let cuantosboletos = numboletos.length
@@ -61,7 +62,7 @@ formCompra.addEventListener('submit', async e => {
     let arregloAsientos
     let nuevosBoletos
 
-    switch (destino) {
+    switch (destino) {      // Preparar arreglo JSON de cada numero de asientos en la nube
         case 'Cancun':
             arregloAsientos = totalAsientos.Cancun
             // console.log(arregloAsientos);
@@ -125,7 +126,7 @@ formCompra.addEventListener('submit', async e => {
         method: 'GET'
     })
 
-    let totalActual = await getTotal.json()
+    let totalActual = await getTotal.json()     // Preparar arreglo JSON de total de asientos en la nube
     let nuevosAsientos
     switch (destino) {
         case 'Cancun':
@@ -156,6 +157,7 @@ formCompra.addEventListener('submit', async e => {
     // console.log(totalActual);
     // console.log(nuevosAsientos);
 
+    // Checar que email exista
     let resp = await fetch('https://sjuvu2c7d9.execute-api.us-east-2.amazonaws.com/dev-bolariz/ticket'+"?Email="+datos[1].value, {
         method: 'GET'
     });

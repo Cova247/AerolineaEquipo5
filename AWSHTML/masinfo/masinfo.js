@@ -1,12 +1,12 @@
-let valores = window.location.search;
-const urlParams = new URLSearchParams(valores);
+let valores = window.location.search;               // Tomar URL 
+const urlParams = new URLSearchParams(valores);     // Arreglo de los parametros
 let origen = urlParams.get('origen');
 let destino = urlParams.get('destino')
 let fecha = urlParams.get('fecha')
 let hora = urlParams.get('hora')
 let costo = urlParams.get('costo')
 
-console.log(origen, destino, fecha, hora, costo, asientosdisp);
+//console.log(origen, destino, fecha, hora, costo, asientosdisp);
 
 let tablaOrigen = document.getElementById('origen')
 let tablaDestino = document.getElementById('destino')
@@ -21,9 +21,8 @@ tablaHora.innerHTML = hora
 tablaFecha.innerHTML = fecha
 tablaCosto.innerHTML = costo
 
-console.log(valores);
+//console.log(valores);
 
-let contador = 0
 let ArregloBoletos = new Array;
 
 function agregarBoleto() {
@@ -109,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     let asientos = await resp.json()
     console.log(asientos);
 
-    if(destino == 'Cancun'){
+    if(destino == 'Cancun'){                // Quitar atributo de disable si no existe en el arreglo de json de asientos
         let disp = asientos.Cancun
         for (let index = 0; index < disp.length; index++) {
             let asiento = document.querySelectorAll('option[value="'+ disp[index] +'"')
