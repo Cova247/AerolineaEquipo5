@@ -214,7 +214,8 @@ formCompra.addEventListener('submit', async e => {
                 }
             })
             let email = {
-                "from" : Email.value,
+                "from" : "bolariz.cloud@gmail.com",
+                "to": Email.value,
                 "subject" : "Boletos Bolariz",
                 "text" : "Buenas tardes, agradecemos su compra, aquí estan sus boletos",
                 "origen" : origen,
@@ -224,7 +225,7 @@ formCompra.addEventListener('submit', async e => {
                 "asientos" : numboletos.toString()
         
             }
-            let respSubida = await fetch('https://sjuvu2c7d9.execute-api.us-east-2.amazonaws.com/dev-bolariz/email', {
+            let respSubidaTotal = await fetch('https://sjuvu2c7d9.execute-api.us-east-2.amazonaws.com/dev-bolariz/email', {
                     method: 'POST',
                     body: JSON.stringify(email),
                     headers: {
@@ -235,7 +236,9 @@ formCompra.addEventListener('submit', async e => {
             let respTotal = await putTotal.json()
             // console.log(respTotal);
             let respAsientos = await putAsientos.json()
+            let respFinal = await respSubidaTotal.json()
             // console.log(respAsientos);
+            //console.log(respFinal)
             window.location.href = '../Gracias/index.html?Email='+ datos[1].value;  
             return
         }
